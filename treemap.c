@@ -77,8 +77,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
       tree->current = aux;
       return aux->pair;
     }
-    return NULL;
   }
+  return NULL; 
 }
 
 

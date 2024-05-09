@@ -26,3 +26,17 @@ treemap.c:82:1: error: control reaches end of non-void function [-Werror=return-
 cc1: all warnings being treated as errors
 Compilation failed
 b308d53
+Thu 09 May 2024 03:35:09 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:76:43: error: expected ‘)’ before ‘{’ token
+   76 |     if(is_equal(tree, key, aux->pair->key){
+      |       ~                                   ^
+      |                                           )
+treemap.c:80:3: error: expected expression before ‘}’ token
+   80 |   }
+      |   ^
+Compilation failed
+d78f23a
