@@ -66,7 +66,8 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
           return;
         }
         else{
-          aux = aux->left;
+          aux = aux->right;
+          
         }
       }
     }
