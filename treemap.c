@@ -125,6 +125,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
       } else {
           tree->root = child;
       }
+
+      free(node); // Libera la memoria ocupada por el nodo
   }
   
 }
