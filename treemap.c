@@ -108,7 +108,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
       node->parent->right = NULL;
     }
   }
-  free(node);
 
 
   // Verifica si el nodo tiene solo un hijo izquierdo
@@ -125,7 +124,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
               node->parent->right = node->left; // Nodo derecho del padre
           }
       }
-      free(node); // Libera la memoria ocupada por el nodo
   }
   else{
       // Verifica si el nodo tiene solo un hijo derecho
@@ -143,10 +141,10 @@ void removeNode(TreeMap * tree, TreeNode* node) {
               }
             
           }
-          free(node); // Libera la memoria ocupada por el nodo
       }
   }
-  
+
+  free(node);
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
