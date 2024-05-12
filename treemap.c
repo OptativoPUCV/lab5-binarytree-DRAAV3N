@@ -52,36 +52,48 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     return;
   }
 
-  TreeNode *aux = tree->root;
-  while(aux != NULL){
-    if(is_equal(tree, key, aux->pair->key)){
-      return; // Key already exists, do nothing
+  void insertTreeMap(TreeMap * tree, void* key, void * value) {
+    if(tree == NULL) return;
+
+    if(tree->root == NULL){
+      TreeNode *nodo = createTreeNode(key, value);
+      tree->root = nodo;
+      tree->current = nodo;
+      return;
     }
 
-    if(tree->lower_than(key, aux->pair->key)){
-      if(aux->left == NULL){
-        TreeNode *nodo = createTreeNode(key, value);
-        nodo->parent = aux;
-        aux->left = nodo;
+    TreeNode *aux = tree->root;
+    while(aux != NULL){
+      if(is_equal(tree, key, aux->pair->key)){
         return;
       }
-      else{
-        aux = aux->left;
+
+      if(tree->lower_than(key, aux->pair->key)){
+        if(aux->left == NULL){
+          TreeNode *nodo = createTreeNode(key, value);
+          nodo->parent = aux;
+          aux->left = nodo;
+          tree->current = nodo;
+          return;
+        }
+        else{
+          aux = aux->left;
+        }
       }
-    }
-    else {
-      if(aux->right == NULL){
-        TreeNode *nodo = createTreeNode(key, value);
-        nodo->parent = aux;
-        aux->right = nodo;
-        return;
-      }
-      else{
-        aux = aux->right;
+      else { // key is greater than aux->pair->key
+        if(aux->right == NULL){
+          TreeNode *nodo = createTreeNode(key, value);
+          nodo->parent = aux;
+          aux->right = nodo;
+          tree->current = nodo;
+          return;
+        }
+        else{
+          aux = aux->right;
+        }
       }
     }
   }
-}
 
 TreeNode * minimum(TreeNode * x){
 
