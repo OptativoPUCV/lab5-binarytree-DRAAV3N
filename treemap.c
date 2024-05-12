@@ -127,6 +127,25 @@ void removeNode(TreeMap * tree, TreeNode* node) {
       }
       free(node); // Libera la memoria ocupada por el nodo
   }
+  else{
+      // Verifica si el nodo tiene solo un hijo derecho
+      if(node->left == NULL){
+          // Reemplaza el nodo con su hijo derecho
+          if(node->parent == NULL){
+              tree->root = node->right; // Nodo raíz
+          }
+          else{
+              if(node->parent->left == node){
+                  node->parent->left = node->right; // Nodo izquierdo del padre
+              }
+              else{
+                  node->parent->right = node->right; // Nodo derecho del padre
+              }
+            
+          }
+          free(node); // Libera la memoria ocupada por el nodo
+      }
+  }
   
 }
 
