@@ -216,3 +216,16 @@ Sun 12 May 2024 03:46:03 PM UTC:
  tests:  23|2
 total_score: 50/70
 b11ca16
+Sun 12 May 2024 03:46:45 PM UTC: 
+ treemap.c | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘upperBound’:
+treemap.c:184:16: error: ‘TreeMap’ has no member named ‘compare’
+  184 |         if(tree->compare(current->key, key) >= 0){ // Clave actual es mayor o igual a key
+      |                ^~
+treemap.c:184:33: error: ‘TreeNode’ has no member named ‘key’
+  184 |         if(tree->compare(current->key, key) >= 0){ // Clave actual es mayor o igual a key
+      |                                 ^~
+Compilation failed
+80ede39
