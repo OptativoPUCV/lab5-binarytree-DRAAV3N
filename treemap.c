@@ -112,7 +112,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
 
   // Verifica si el nodo tiene solo un hijo izquierdo
-  else if(node->right == NULL){
+  if(node->right == NULL){
       // Reemplaza el nodo con su hijo izquierdo
       if(node->parent == NULL){
           tree->root = node->left; // Nodo raíz
