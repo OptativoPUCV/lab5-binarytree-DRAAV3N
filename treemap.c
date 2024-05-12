@@ -178,20 +178,24 @@ Pair* upperBound(TreeMap* tree, void* key){
   if(tree == NULL || tree->root == NULL) return NULL;
   TreeNode* current = tree->root;
   TreeNode* ub_node = NULL; // Nodo con la menor clave mayor o igual a key
-
   while(current != NULL){
     if(is_equal(tree, key, current->pair->key)){
       return current->pair;
     }
-    else{
-      current = current->right; // Explora el subárbol derecho
+    if(tree->lower_than(key, current->pair->key)){
+      ub_node = current;
+      current = current->left;
+      
     }
+    else{
+      current = current->right;
+    }
+    
   }
-
-  if(ub_node != NULL)
-    return ub_node->pair; // Devuelve el par asociado al nodo ub_node
-  else
-    return NULL; // Retorna NULL si no se encuentra ningún par
+  if(ub_node != NULL){
+    return ub_node->pair;
+  }
+  return NULL;
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
